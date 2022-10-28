@@ -1,0 +1,126 @@
+<link rel="stylesheet" href="odev2.css">
+<script src="./odev.js"></script>
+<div class="mrb">
+<script>
+    
+var m=prompt("Adınızı Giriniz");
+document.write("Merhaba"+" "+m);
+</script>
+</div>
+<html>
+    <head>
+        <meta charset="UTF-8" >
+        <meta http-equiv="X-UA-Compatible" content="IE-edge" >
+        <meta name="viewport" content="width=device-width, initial-scale-1.0">
+        <title>
+            odev2
+        </title>
+    </head>
+    <body onload="mageImage()">
+        <div>
+            <header id="header">
+                <img id="logo" src="./resimler1/images.png" alt="">
+                
+                
+    
+            </header>
+        </div>
+        <div id="logo" class="LOGO">
+       <h1>LOGO</h1>
+       </div>
+       
+       
+    
+            <div class="baslik">
+       <h2>Küresel İnternet Hızı Yeniden Yükselişte</h2>
+       </div>
+       
+       <div class="parag">
+       <img class="resim" width="300" height="150" src="C:\Users\rustl\OneDrive\Masaüstü\html\resim\ulkemizin-dort-bir-yanindan-guzel-manzara-fotograflari.jpg" alt="">
+       
+        <p>
+       İnternet ve internet sayesinde erişilebilirlik artık günlük
+yaşantımızın bir numaralı vazgeçilmezi. Gerçi ülkemizde hala
+internet hızının düşürülmesi, erişim engelleri ya da internet
+sağlayıcılarının sunduğu hiç de adil olmayan saçma kota sistemleri
+gibi mantıksızca şeyler yüzünden bizim internet kullanırken keyif
+almaktan ziyade ''kaç GB kaldı?'' ya da ''hangi VPN daha iyi?'' gibi
+dertlerimiz oluyor fakat; dünya genelinde internet hızı, yükleliş
+göstermeye devam ediyor.
+</p>
+</div>
+
+<div id="resimrulosu">
+
+<div class="buttons">
+<button class="b1" id="js-btn">resim ekle</button>
+<button class="b2" id="js-image-remove-btn">resim sil </button>
+</div>
+<div id="js-image-container"></div>
+</div>
+
+<script>
+    const addImageButton = document.getElementById("js-btn");
+const removeImageButton = document.getElementById("js-image-remove-btn");
+const imageContainerElement = document.getElementById("js-image-container");
+
+const imageURLs = Array.from(
+    new Set([
+        "https://picsum.photos/200/300/?blur",
+        "https://picsum.photos/seed/picsum/200/300",
+        "https://picsum.photos/200/300?grayscale",
+        "https://picsum.photos/200/300/?blur",
+        "https://picsum.photos/200/300.webp",
+        "https://picsum.photos/v2/list?page=2&limit=100",
+        "https://loremflickr.com/640/360"
+        
+    ])
+
+);
+function addImage(){
+    if (!imageURLs.length) return alert("resim bitti");
+    const index = Math.floor(Math.random() * imageURLs.length);
+
+    imageContainerElement.insertAdjacentHTML(
+        "afterbegin",
+        `<img id="ruloresim" src="${imageURLs[index]}" />`
+    );
+    imageURLs.splice(index, 1);
+
+}
+
+function removeImage () {
+    const {children} = imageContainerElement
+    if(!children.length) return alert ('lürfen resim ekleyin');
+    const [firstImage] = children
+    imageURLs.push(firstImage.src)
+    firstImage.remove()
+}
+    
+
+addImageButton.addEventListener("click", addImage);
+removeImageButton.addEventListener("click", removeImage)
+
+</script>
+
+
+
+
+<footer>
+     <div class="link" >
+       Desingned by ....
+       <br><br>
+       <br>
+       <a href="www.asdadaa.com">link1</a>
+       <a href="www.asdadada.com">link2</a>
+       <a href="www.asdasda.com">link3</a>
+       </div>
+       </footer>
+
+        
+
+    </body>
+
+
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+</head>
+<body>
+   
+   
+    <link rel="stylesheet" href="admin.css">
+
+    <input class="yeni" type="button" value="Sayfayı Yenileme" onclick="document.location.reload(true);">
+        
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <button id="getEmployee" class="btn">haber çek</button>
+               <table class="table table-bordered table-striped mt-3">
+                <thead>
+                    <tr>
+                        <th>numara</th>
+                        <th>resim</th>
+                        <th>başlık</th>
+                        <th>detay</th>
+                    </tr>
+                </thead>
+                <tbody class="ob" id="employees">
+                    
+                </tbody>
+               </table>
+            </div>
+        </div>
+    </div>
+    <div class="div1" id="yaz"></div>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+        document.querySelector('#getEmployee').addEventListener('click', loadEmployee);
+  
+  function loadEmployee(){
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET','https://jsonplaceholder.typicode.com/posts',true);
+  
+      xhr.onload = function(){
+          if(this.status === 200){
+              let employees = JSON.parse(this.responseText)
+  
+              let html="";
+  
+              employees.forEach(haber => {
+                  html += `<tr>
+                              <td>${haber.id}</td>                            
+                              <td>${haber.resim}</td>
+                              <td>${haber.title}</td>
+                              <td>${haber.body}</td>
+                          </tr>`;        
+              });
+  
+              document.querySelector('#employees').innerHTML = html;
+          }
+      }
+      xhr.send();
+  }
+  
+          </script>
+    
+</body>
+</html>
